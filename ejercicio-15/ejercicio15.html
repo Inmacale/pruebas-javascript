@@ -2,7 +2,7 @@
 <!-- saved from url=(0088)https://uniwebsidad.com/static/libros/ejercicios/javascript/ejercicio15/ejercicio15.html -->
 <html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<title>Ejercicio 15 - Informaci�n sobre eventos</title>
+<title>Ejercicio 15 - Información sobre eventos</title>
 <style type="text/css">
 body {font-family: arial, helvetica;}
 #info {width:160px; border:thin solid silver; padding:.5em; position:fixed;}
@@ -35,6 +35,17 @@ body {font-family: arial, helvetica;}
 				coordenaYrelativa = evento.clientY;
 				muestraInformacion (['Ratón', 'Navegador ['+coordenadaXrelativa+', '+coordenaYrelativa+']','Pafina['+coordenadaXabsoluta+','+coordenadaYabsoluta+']']);
 				break;
+			case 'keypress':
+				document.getElementById('info').style.backgroundColor = '#CCE6FF';
+				var caracter = evento.charCode || evento.keyCode;  
+				var letra = String.fromCharCode(caracter);
+     			var codigo = letra.charCodeAt(0);
+      			muestraInformacion(['Teclado', 'Carácter ['+letra+']', 'Código ['+codigo+']']);
+				break;
+			case 'click':
+				document.getElementById('info').style.backgroundColor = '#FFFFCC';
+				break;
+			
 		}
 	}
 
@@ -47,6 +58,8 @@ function muestraInformacion(mensaje) {
 	}
 
 	document.onmousemove = informacion;
+	document.onkeyup = informacion;
+	document.onclick = informacion;
 }
 </script>
 </head>
